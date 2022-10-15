@@ -1,0 +1,78 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Compile",
+            "command": "C:\\MinGW\\bin\\g++.exe",
+            "args": [
+                "-std=c++17",
+                "-c",
+                "src\\main.cpp",
+                "-o",
+                "main.o",
+                "-O2",
+                "-I",
+                "libs\\SFML-2.5.1\\include",
+                "-DSFML_STATIC",
+            ],
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+            }
+        },
+        {
+            "label": "Link",
+            "command": "C:\\MinGW\\bin\\g++.exe",
+            "args": [
+                "-o",
+                "Files++.exe",
+                "main.o",
+                "src\\TextBox.cpp",
+                "src\\Util.cpp",
+                "-L",
+                "libs\\SFML-2.5.1\\lib",
+                "-lsfml-graphics-s-d",
+                "-lsfml-window-s-d",
+                "-lsfml-system-s-d",
+                "-lopengl32",
+                "-lfreetype",
+                "-lwinmm",
+                "-lgdi32"
+            ],
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+            }
+        },
+        {
+            "label": "Build",
+            "detail": "Compile & Link",
+            "dependsOrder": "sequence",
+            "dependsOn": [
+                "Compile",
+                "Link"
+            ],
+            "group": {
+                "kind": "build",
+            }
+        },
+        {
+            "label": "Run",
+            "detail": "Build & Run",
+            "command": ".\\Files++.exe",
+            "dependsOrder": "sequence",
+            "dependsOn": [
+                "Compile",
+                "Link"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+}
